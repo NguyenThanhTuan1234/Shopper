@@ -35,7 +35,7 @@ public class AccountDao extends DbManager{
 	}
 	
 	public boolean insertAccount(Account account) {
-		String sql = "insert into account (username, password, address, phone, role) values(?, ?, N?, ?, ?)";
+		String sql = "insert into account (username, password, address, phone, role) values(?, ?, ?, ?, ?)";
 		PreparedStatement pstm;
 		
 		openConnection();
@@ -119,7 +119,7 @@ public class AccountDao extends DbManager{
 	}
 	public static void main(String []args){
 		AccountDao dao = new AccountDao();
-		System.out.println(dao.checkAccount("manh", "123456").getPhone());
+		System.out.println(dao.checkAccount("Tuan", "123456").getPhone());
 		
 	}
 }

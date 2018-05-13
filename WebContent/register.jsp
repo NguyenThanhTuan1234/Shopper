@@ -33,55 +33,42 @@
 </head>
 <body>
 		<jsp:include page="header.jsp"></jsp:include>
-					
-			<section class="header_text sub">
-			<img class="pageBanner" src="themes/images/pageBanner.png" alt="New products" >
-				<h4><span>Login or Regsiter</span></h4>
-			</section>			
-			<section class="main-content">				
-				<div class="row">
-					
-					<div class="span7">					
-						<h4 class="title"><span class="text"><strong>Register</strong> Form</span></h4>
-						<form action="AccountController" method="POST" class="form-stacked">
-						<%
-							if (request.getAttribute("error_register") != null) {
-						%>
-							<div class="error-message">
-								<p style="color:red"><%=request.getAttribute("error_register") %></p>
-							</div>
-						<%
-							}
-						%>
-							<fieldset>
-								<div class="control-group">
-									<label class="control-label">Username</label>
-									<div class="controls">
-										<input type="text" placeholder="Enter your username" class="input-xlarge">
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label">Email address:</label>
-									<div class="controls">
-										<input type="text" placeholder="Enter your email" class="input-xlarge">
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label">Password:</label>
-									<div class="controls">
-										<input type="password" placeholder="Enter your password" class="input-xlarge">
-									</div>
-								</div>							                            
-								<div class="control-group">
-									<p>Now that we know who you are. I'm not a mistake! In a comic, you know how you can tell who the arch-villain's going to be?</p>
-								</div>
-								<hr>
-								<div class="actions"><input tabindex="9" class="btn btn-inverse large" type="submit" value="Create your account"></div>
-							</fieldset>
-						</form>					
-					</div>				
+						
+			
+	<div class="container">
+		<div class="account">
+			<h2 class="account-in">Đăng Ký</h2>
+			<form action="AccountController" method="POST">
+				<%
+					if (request.getAttribute("error_register") != null) {
+				%>
+				<div class="error-message">
+					<p style="color:red"><%=request.getAttribute("error_register") %></p>
 				</div>
-			</section>
+				<%
+					}
+				%>
+				<div>
+					<span class="col-md-2">Tên Tài Khoản *</span> <input type="text" name="username">
+				</div>
+				<div>
+					<span class="word col-md-2">Mật Khẩu *</span> <input
+						type="password" name="password">
+				</div>
+				<div>
+					<span class="col-md-2">Địa chỉ </span> <input type="text" name="address">
+				</div>
+				<div>
+					<span class="col-md-2">Số Điện Thoại </span> <input type="text" name="phone">
+				</div>
+				<div class="clearfix"></div>
+				<div class="col-md-offset-3">
+					<input type="submit" value="Đăng ký" >
+				</div>
+				<input type="hidden" name="command" value="register">				
+			</form>
+		</div>
+	</div>
 						
 		<jsp:include page="footer.jsp"></jsp:include>
 		

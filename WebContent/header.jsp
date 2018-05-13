@@ -115,7 +115,8 @@
 							<li><a href="#">My Account</a></li>
 							<li><a href="cart.jsp">Your Cart</a></li>
 							<li><a href="checkout.jsp">Checkout</a></li>					
-							<li><a href="login.jsp">Login</a></li>		
+							<li><a href="login.jsp">Login</a></li>
+							<li><a href="register.jsp">Register</a></li>		
 						</ul>
 					</div>
 				</div>

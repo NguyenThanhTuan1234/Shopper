@@ -171,6 +171,7 @@
 							</div>						
 						</div>
 						<br/>
+						<!--  
 						<div class="row">
 							<div class="span12">
 								<h4 class="title">
@@ -186,7 +187,7 @@
 												<li class="span3">
 													<div class="product-box">
 														<span class="sale_tag"></span>
-														<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware2.jpg" alt="" /></a></p>
+														<p><a href="product_detail.html"><img src="#" alt="" /></a></p>
 														<a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
 														<a href="products.html" class="category">Commodo consequat</a>
 														<p class="price">$25.50</p>
@@ -258,6 +259,7 @@
 								</div>
 							</div>						
 						</div>
+						-->
 						<div class="row feature_box">						
 							<div class="span4">
 								<div class="service">
