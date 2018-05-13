@@ -1,3 +1,7 @@
+<%@page import="ultils.Constant"%>
+<%@page import="entities.Product"%>
+<%@page import="dao.ProductDao"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -34,6 +38,10 @@
 </head>
 <body>
 	
+	<%
+		ProductDao productDao = new ProductDao();
+	%>
+	
 	<section class="header_text">
 				We stand for top quality templates. Our genuine developers always optimized bootstrap commercial templates. 
 				<br/>Don't miss to use our cheap abd best bootstrap templates.
@@ -52,7 +60,39 @@
 								<div id="myCarousel" class="myCarousel carousel slide">
 									<div class="carousel-inner">
 										<div class="active item">
-											<ul class="thumbnails">												
+											<ul class="thumbnails">	
+											
+											<%
+												for (Product product : productDao.getLastProduct(Constant.NUMBER_PRODUCT_PER_PAGE)) {
+											%>
+												<li class "span3"><div class="product-box">
+												<span class="sale_tag"></span>
+												<p>
+													<a href="single.jsp?product_id=<%=product.getId()%>"
+														class=""><img src="images/<%=product.getImage() %>" alt="" /> </a>
+												<!-- 	<div class="top-content bag">  -->
+												</p>
+												
+													<a href="single.jsp?product_id=<%=product.getId()%>" class="title"><%=product.getName() %></a>
+												
+													<!--  <div class="white"> -->
+													<!--  
+													<a href="CartController?command=addToCart&product_id=<%=product.getId()%>"
+														class="hvr-shutter-in-vertical hvr-shutter-in-vertical2">Mua</a>
+														<p class="dollar">
+													
+															<span class="in-dollar">VND</span><span><%=product.getPrice()%></span>
+												</p>
+												-->
+													<p class="price"><%=product.getPrice()%></p>
+												<!--  <div class="clearfix"></div> -->
+												
+												</div></li>
+											<%
+												}
+											%>
+											
+											<!--  											
 												<li class="span3">
 													<div class="product-box">
 														<span class="sale_tag"></span>
@@ -80,13 +120,14 @@
 													</div>
 												</li>
 												<li class="span3">
-													<div class="product-box">
+													 <div class="product-box"> 
 														<p><a href="product_detail.html"><img src="themes/images/ladies/4.jpg" alt="" /></a></p>
 														<a href="product_detail.html" class="title">You think fast</a><br/>
 														<a href="products.html" class="category">World once</a>
 														<p class="price">$31.45</p>
 													</div>
 												</li>
+												-->
 											</ul>
 										</div>
 										<div class="item">

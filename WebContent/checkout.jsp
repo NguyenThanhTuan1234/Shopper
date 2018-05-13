@@ -1,3 +1,5 @@
+<%@page import="entities.Account"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -32,6 +34,15 @@
 
 </head>
 <body>
+	
+	<%
+		Account account = null;
+		if (session.getAttribute("account") != null) {
+			account = (Account) session.getAttribute("account");
+		} else {
+			response.sendRedirect("/shopper/login.jsp");
+		}
+	%>
 	
 	<jsp:include page="header.jsp"></jsp:include>
 	
@@ -207,6 +218,42 @@
 								<div id="collapseThree" class="accordion-body collapse">
 									<div class="accordion-inner">
 										<div class="row-fluid">
+											<form action="CheckoutController" method="POST">
+				<div>
+					<%
+						if (account != null) {
+					%>
+					<span class="col-md-3">Địa chỉ*</span> <input type="text"
+						name="address" value="<%=account.getAddress()%>">
+					<%
+						} else {
+					%>
+					<span class="col-md-3">Địa chỉ*</span> <input type="text"
+						name="address">
+					<%
+						}
+					%>
+				</div>
+				<div>
+					<%
+						if (account != null) {
+					%>
+					<span class="col-md-3">Số Điện Thoại*</span> <input type="text"
+						name="phone" value="<%=account.getPhone()%>">
+					<%
+						} else {
+					%>
+						<span class="col-md-3">Số Điện Thoại*</span> <input type="text"
+						name="phone">
+					<%
+						}
+					%>
+				</div>
+				<div class="col-md-offset-4">
+					<input type="submit" value="Thanh Toán">
+				</div>
+			</form>
+											<!--  
 											<div class="control-group">
 												<label for="textarea" class="control-label">Comments</label>
 												<div class="controls">
@@ -214,6 +261,7 @@
 												</div>
 											</div>									
 											<button class="btn btn-inverse pull-right">Confirm order</button>
+											-->
 										</div>
 									</div>
 								</div>

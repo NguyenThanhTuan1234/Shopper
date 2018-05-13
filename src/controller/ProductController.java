@@ -27,7 +27,7 @@ import entities.SubCategory;
 public class ProductController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private static final String SAVE_DIR = "ElectronicsStore/WebContent/images";
+	private static final String SAVE_DIR = "shopper/WebContent/images";
 
 	/**
 	 * @see HttpServlet#HttpServlet()

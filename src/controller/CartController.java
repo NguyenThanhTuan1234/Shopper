@@ -53,7 +53,7 @@ public class CartController extends HttpServlet {
 			break;
 		}
 		session.setAttribute("cart", cart);
-		response.sendRedirect("/ElectronicsStore/index.jsp");
+		response.sendRedirect("/shopper/index.jsp");
 	}
 
 }

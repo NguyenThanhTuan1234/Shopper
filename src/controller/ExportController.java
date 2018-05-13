@@ -42,7 +42,7 @@ public class ExportController extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
-		String urlRedirect = "/ElectronicsStore/admin/algorithm.jsp";
+		String urlRedirect = "/shopper/admin/algorithm.jsp";
 		
 //		CategoryLogic categoryLogic = new CategoryLogic();
 //		SubCategoryLogic subCategoryLogic = new SubCategoryLogic();

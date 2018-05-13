@@ -42,8 +42,17 @@
 				<div class="row">
 					<div class="span5">					
 						<h4 class="title"><span class="text"><strong>Login</strong> Form</span></h4>
-						<form action="#" method="post">
-							<input type="hidden" name="next" value="/">
+						<form action="AccountController" method="POST">
+						<%
+							if (request.getAttribute("error") != null) {
+						%>
+							<div class="error-message">
+								<p style="color:red"><%=request.getAttribute("error") %></p>
+							</div>
+						<%
+							}
+						%>
+							<input type="hidden" name="command" value="login">
 							<fieldset>
 								<div class="control-group">
 									<label class="control-label">Username</label>
@@ -65,9 +74,19 @@
 							</fieldset>
 						</form>				
 					</div>
+					<!--  
 					<div class="span7">					
 						<h4 class="title"><span class="text"><strong>Register</strong> Form</span></h4>
-						<form action="#" method="post" class="form-stacked">
+						<form action="AccountController" method="POST" class="form-stacked">
+						<%
+							if (request.getAttribute("error_register") != null) {
+						%>
+							<div class="error-message">
+								<p style="color:red"><%=request.getAttribute("error_register") %></p>
+							</div>
+						<%
+							}
+						%>
 							<fieldset>
 								<div class="control-group">
 									<label class="control-label">Username</label>
@@ -78,7 +97,7 @@
 								<div class="control-group">
 									<label class="control-label">Email address:</label>
 									<div class="controls">
-										<input type="password" placeholder="Enter your email" class="input-xlarge">
+										<input type="text" placeholder="Enter your email" class="input-xlarge">
 									</div>
 								</div>
 								<div class="control-group">
@@ -96,6 +115,7 @@
 						</form>					
 					</div>				
 				</div>
+				-->
 			</section>
 						
 		<jsp:include page="footer.jsp"></jsp:include>

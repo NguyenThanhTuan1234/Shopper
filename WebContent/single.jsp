@@ -1,3 +1,9 @@
+<%@page import="ultils.Constant"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="dao.ProductRuleDao"%>
+<%@page import="entities.Product"%>
+<%@page import="dao.ProductDao"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -35,6 +41,19 @@
 </head>
 <body>
 	
+	<%
+		ProductDao productDao = new ProductDao();
+		Product product = new Product();
+		ProductRuleDao productRuleDao = new ProductRuleDao();
+		HashMap<Integer, Product> productMap = productDao.getAllProductMap();
+		String product_id = "";
+		if (request.getParameter("product_id") != null) {
+			product_id = request.getParameter("product_id");
+			product = productDao.getProduct(Integer.parseInt(product_id));
+
+		}
+	%>
+	
 	<jsp:include page="header.jsp"></jsp:include>
 	
 		<section class="header_text sub">
@@ -46,7 +65,7 @@
 					<div class="span9">
 						<div class="row">
 							<div class="span4">
-								<a href="themes/images/ladies/1.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" src="themes/images/ladies/1.jpg"></a>												
+								<a href="single.jsp?product_id=<%=product.getId()%>" class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" src="images/<%=product.getImage() %>"></a>												
 								<ul class="thumbnails small">								
 									<li class="span1">
 										<a href="themes/images/ladies/2.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 2"><img src="themes/images/ladies/2.jpg" alt=""></a>
@@ -64,12 +83,12 @@
 							</div>
 							<div class="span5">
 								<address>
-									<strong>Brand:</strong> <span>Apple</span><br>
+									<strong>Name:</strong> <span><%=product.getName()%></span><br>
 									<strong>Product Code:</strong> <span>Product 14</span><br>
 									<strong>Reward Points:</strong> <span>0</span><br>
 									<strong>Availability:</strong> <span>Out Of Stock</span><br>								
 								</address>									
-								<h4><strong>Price: $587.50</strong></h4>
+								<h4><strong>Price: <%=product.getPrice()%></strong></h4>
 							</div>
 							<div class="span5">
 								<form class="form-inline">
@@ -83,7 +102,8 @@
 									<p>&nbsp;</p>
 									<label>Qty:</label>
 									<input type="text" class="span1" placeholder="1">
-									<button class="btn btn-inverse" type="submit">Add to cart</button>
+									<a href="CartController?command=addToCart&product_id=<%=product.getId() %>">
+									<button class="btn btn-inverse" type="submit">Add to cart</button></a>
 								</form>
 							</div>							
 						</div>
@@ -94,7 +114,7 @@
 									<li class=""><a href="#profile">Additional Information</a></li>
 								</ul>							 
 								<div class="tab-content">
-									<div class="tab-pane active" id="home">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem</div>
+									<div class="tab-pane active" id="home"><%=product.getDescription()%></div>
 									<div class="tab-pane" id="profile">
 										<table class="table table-striped shop_attributes">	
 											<tbody>
@@ -121,17 +141,22 @@
 								</h4>
 								<div id="myCarousel-1" class="carousel slide">
 									<div class="carousel-inner">
+									<%
+										for (int productId : productRuleDao.getRule(Integer.parseInt(product_id), Constant.NUMBER_ITEM)) {
+											product = productMap.get(productId);
+									%>
 										<div class="active item">
 											<ul class="thumbnails listing-products">
 												<li class="span3">
 													<div class="product-box">
 														<span class="sale_tag"></span>												
-														<a href="product_detail.html"><img alt="" src="themes/images/ladies/6.jpg"></a><br/>
-														<a href="product_detail.html" class="title">Wuam ultrices rutrum</a><br/>
+														<a href="single.jsp?product_id=<%=product.getId()%>"><img alt="" src="images/<%=product.getImage() %>"></a><br/>
+														<a href="single.jsp?product_id=<%=product.getId() %>" class="title"><%=product.getName() %></a><br/>
 														<a href="#" class="category">Suspendisse aliquet</a>
-														<p class="price">$341</p>
+														<p class="price"><%=product.getPrice()%></p>
 													</div>
 												</li>
+										<!--  
 												<li class="span3">
 													<div class="product-box">
 														<span class="sale_tag"></span>												
@@ -148,11 +173,24 @@
 														<a href="#" class="category">Erat gravida</a>
 														<p class="price">$28</p>
 													</div>
-												</li>												
+												</li>	
+										-->											
 											</ul>
 										</div>
+										<%
+											}
+										%>
 										<div class="item">
 											<ul class="thumbnails listing-products">
+												<li class="span3">
+													<div class="product-box">
+														<span class="sale_tag"></span>												
+														<a href="single.jsp?product_id=<%=product.getId() %>"><img alt="" src="images/<%=product.getImage() %>"></a><br/>
+														<a href="single.jsp?product_id=<%=product.getId() %>" class="title"><%=product.getName() %></a><br/>
+														<a href="#" class="category">Suspendisse aliquet</a>
+														<p class="price"><%=product.getPrice()%></p>
+													</div>
+												</li>
 												<li class="span3">
 													<div class="product-box">
 														<span class="sale_tag"></span>												

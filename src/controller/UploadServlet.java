@@ -69,7 +69,7 @@ public class UploadServlet extends HttpServlet {
         String uploadPath = getServletContext().getRealPath("")
 //                + File.separator
                 + UPLOAD_DIRECTORY;
-        uploadPath = "/home/manhnt/workspace/ElectronicsStore/WebContent/images";
+        uploadPath = "/home/manhnt/workspace/shopper/WebContent/images";
         // creates the directory if it does not exist
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {

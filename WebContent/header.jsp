@@ -1,3 +1,14 @@
+<%@page import="entities.Item"%>
+<%@page import="java.util.Map"%>
+<%@page import="entities.Cart"%>
+<%@page import="entities.Account"%>
+<%@page import="entities.SubCategory"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="dao.SubCategoryDao"%>
+<%@page import="entities.Category"%>
+<%@page import="dao.CategoryDao"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -29,7 +40,22 @@
 </head>
 <body>
 	
-	
+	<%
+		CategoryDao categoryDao = new CategoryDao();
+		SubCategoryDao subCategoryDao = new SubCategoryDao();
+		HashMap<Integer, ArrayList<SubCategory>> categoryMap = subCategoryDao.getCategoryMap();
+		Account account = null;
+		if (session.getAttribute("account") != null) {
+			account = (Account) session.getAttribute("account");
+		}
+		Cart cart;
+		if (session.getAttribute("cart") != null) {
+			cart = (Cart) session.getAttribute("cart");
+		} else {
+			cart = new Cart();
+			session.setAttribute("cart", cart);
+		}
+	%>
 	
 	<div id="top-bar" class="container">
 			<div class="row">
@@ -42,9 +68,9 @@
 					<div class="account pull-right">
 						<ul class="user-menu">				
 							<li><a href="#">My Account</a></li>
-							<li><a href="cart.html">Your Cart</a></li>
-							<li><a href="checkout.html">Checkout</a></li>					
-							<li><a href="register.html">Login</a></li>		
+							<li><a href="cart.jsp">Your Cart</a></li>
+							<li><a href="checkout.jsp">Checkout</a></li>					
+							<li><a href="login.jsp">Login</a></li>		
 						</ul>
 					</div>
 				</div>
@@ -53,8 +79,35 @@
 		<div id="wrapper" class="container">
 			<section class="navbar main-menu">
 				<div class="navbar-inner main-menu">				
-					<a href="index.html" class="logo pull-left"><img src="themes/images/logo.png" class="site_logo" alt=""></a>
+					<a href="index.jsp" class="logo pull-left"><img src="themes/images/logo.png" class="site_logo" alt=""></a>
 					<nav id="menu" class="pull-right">
+					
+						<!--  <li class="active"><a href="index.jsp"><i> </i>Trang chủ</a></li> -->
+						<%
+							for (Category category : categoryDao.getListCategory()) {
+						%>
+						<li><%=category.getName()%>
+							<ul>
+								<%
+									ArrayList<SubCategory> listSubCategory = (ArrayList) categoryMap.get(category.getId());
+										if (listSubCategory != null) {
+
+											for (SubCategory subcategory : listSubCategory) {
+								%>
+								<li><a
+									href="products.jsp?sub_category=<%=subcategory.getId()%>&sub_category_name=<%=subcategory.getName()%>&page=1"><%=subcategory.getName()%></a></li>
+								<%
+									}
+										}
+								%>
+
+							</ul>
+						</li>
+						<%
+							}
+						%>
+						
+						<!--  
 						<ul>
 							<li><a href="./products.html">Woman</a>					
 								<ul>
@@ -75,6 +128,7 @@
 							<li><a href="./products.html">Best Seller</a></li>
 							<li><a href="./products.html">Top Seller</a></li>
 						</ul>
+						-->
 					</nav>
 				</div>
 			</section>

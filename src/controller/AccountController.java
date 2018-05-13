@@ -60,13 +60,13 @@ public class AccountController extends HttpServlet {
 		case "register":
 			if (accountDao.isExist(request.getParameter("username"))) {
 				request.setAttribute("error_register", "Tài khoản đã tồn tại. Xin vui lòng nhập tên tài khoản khác");
-				url = "/register.jsp";
+				url = "/login.jsp";
 			} else {
 				account = new Account();
 				account.setUsername(request.getParameter("username"));
 				account.setPassword(MD5Algorithm.encryption(request.getParameter("password")));
-				account.setAddress(request.getParameter("address"));
-				account.setPhone(request.getParameter("phone"));
+//				account.setAddress(request.getParameter("address"));
+//				account.setPhone(request.getParameter("phone"));
 				accountDao.insertAccount(account);
 				account = accountDao.getAccount(request.getParameter("username"));
 				session.setAttribute("account", account);

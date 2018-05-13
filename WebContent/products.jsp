@@ -1,3 +1,8 @@
+<%@page import="dao.SubCategoryRuleDao"%>
+<%@page import="ultils.Constant"%>
+<%@page import="entities.Product"%>
+<%@page import="dao.ProductDao"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -32,17 +37,58 @@
 	
 </head>
 <body>
+
+	<%
+		ProductDao productDao = new ProductDao();
+		SubCategoryRuleDao subCategoryRuleDao = new SubCategoryRuleDao();
+		int total = 0;
+		int pageno = 1;
+		String sub_category_id = "";
+		String sub_category_name = "";
+		if (request.getParameter("sub_category") != null) {
+			sub_category_id = request.getParameter("sub_category");
+
+		}
+		if (request.getParameter("sub_category_name") != null) {
+			sub_category_name = request.getParameter("sub_category_name");
+
+		}
+		if (request.getParameter("page") != null) {
+			pageno = Integer.parseInt(request.getParameter("page"));
+		}
+		total = productDao.countTotal(Integer.parseInt(sub_category_id));
+	%>
+
 	<jsp:include page="header.jsp"></jsp:include>
 	
 		<section class="header_text sub">
 			<img class="pageBanner" src="themes/images/pageBanner.png" alt="New products" >
-				<h4><span>New products</span></h4>
+				<h4><span><%=sub_category_name%></span></h4>
 			</section>
 			<section class="main-content">
 				
 				<div class="row">						
 					<div class="span9">								
 						<ul class="thumbnails listing-products">
+							
+							<%
+								for (Product product : productDao.getListProduct(Integer.parseInt(sub_category_id),
+									(pageno - 1) * Constant.NUMBER_PRODUCT_PER_PAGE, Constant.NUMBER_PRODUCT_PER_PAGE)) {
+							%>
+								
+							<li class="span3">
+								<div class="product-box">
+									<span class="sale_tag"></span>												
+									<a href="single.jsp?product_id=<%=product.getId()%>"><img alt="" src="images/<%=product.getImage() %>"></a><br/>
+									<a href="single.jsp?product_id=<%=product.getId()%>" class="title"><%=product.getName() %></a><br/>
+									<a href="#" class="category">Phasellus consequat</a>
+									<p class="price"><%=product.getPrice()%></p>
+								</div>
+							</li>    
+							<%
+								}
+							%>
+							<!--  
 							<li class="span3">
 								<div class="product-box">
 									<span class="sale_tag"></span>												
@@ -118,16 +164,47 @@
 									<p class="price">$261</p>
 								</div>
 							</li>
-						</ul>								
+						</ul>	
+						-->		
+						
+									
+											
 						<hr>
 						<div class="pagination pagination-small pagination-centered">
 							<ul>
-								<li><a href="#">Prev</a></li>
-								<li class="active"><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">Next</a></li>
+								<%
+									if (pageno != 1) {
+								%>
+									<li><a href="products.jsp?sub_category=<%=sub_category_id%>&sub_category_name=<%=sub_category_name%>&page=<%=pageno - 1%>"><i></i></a></li>
+								<%
+									}
+								%>
+								<%
+									for (int i = 0; i <= total / (Constant.NUMBER_PRODUCT_PER_PAGE + 1); i++) {
+								%>
+									<li class=""><a href="products.jsp?sub_category=<%=sub_category_id%>&sub_category_name=<%=sub_category_name%>&page=<%=i + 1%>">
+								<%
+									if (pageno == (i + 1)) {
+								%><span><%=i + 1%></span>
+								<%
+									} else {
+								%>
+										<%=i + 1%>
+								<%
+ 									}
+								%>
+									</a></li>
+								<%
+									}
+								%>
+								<%
+									if (pageno != (total / Constant.NUMBER_PRODUCT_PER_PAGE +1)) {
+								%>
+									<li><a href="products.jsp?sub_category=<%=sub_category_id%>&sub_category_name=<%=sub_category_name%>&page=<%=pageno + 1%>"><i
+						class="next"> </i></a></li>
+								<%
+									}
+								%>
 							</ul>
 						</div>
 					</div>
@@ -212,6 +289,61 @@
 							</ul>
 						</div>
 					</div>
+					
+					<div class="span9">	
+								<br>
+								<h4 class="title">
+									<span class="pull-left"><span class="text"><strong>Related</strong> Products</span></span>
+									<span class="pull-right">
+										<a class="left button" href="#myCarousel-1" data-slide="prev"></a><a class="right button" href="#myCarousel-1" data-slide="next"></a>
+									</span>
+								</h4>
+								<div id="myCarousel-1" class="carousel slide">
+									<div class="carousel-inner">
+									<%
+										Product product;
+										int count = 0;
+											for (int subCategoryId : subCategoryRuleDao.getRuleList(Integer.parseInt(sub_category_id))) {
+												if((count ++) == 4) break;
+												product = productDao.getProductBySubCategoryId(subCategoryId);
+									%>
+										<div class="active item">
+											<ul class="thumbnails listing-products">
+												<li class="span3">
+													<div class="product-box">
+														<span class="sale_tag"></span>												
+														<a href="single.jsp?product_id=<%=product.getId()%>"><img alt="" src="images/<%=product.getImage() %>"></a><br/>
+														<a href="single.jsp?product_id=<%=product.getId() %>" class="title"><%=product.getName() %></a><br/>
+														<a href="#" class="category">Suspendisse aliquet</a>
+														<p class="price"><%=product.getPrice()%></p>
+													</div>
+												</li>
+										<!--  
+												<li class="span3">
+													<div class="product-box">
+														<span class="sale_tag"></span>												
+														<a href="product_detail.html"><img alt="" src="themes/images/ladies/5.jpg"></a><br/>
+														<a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
+														<a href="#" class="category">Phasellus consequat</a>
+														<p class="price">$341</p>
+													</div>
+												</li>       
+												<li class="span3">
+													<div class="product-box">												
+														<a href="product_detail.html"><img alt="" src="themes/images/ladies/4.jpg"></a><br/>
+														<a href="product_detail.html" class="title">Praesent tempor sem</a><br/>
+														<a href="#" class="category">Erat gravida</a>
+														<p class="price">$28</p>
+													</div>
+												</li>	
+										-->											
+											</ul>
+										</div>
+										<%
+											}
+										%>
+			
+					
 				</div>
 			</section>
 	

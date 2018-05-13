@@ -39,7 +39,7 @@ public class CheckoutController extends HttpServlet {
 		billDao.insertBill(bill);
 		cart = new Cart();
 		session.setAttribute("cart", cart);
-		response.sendRedirect("/ElectronicsStore/index.jsp");
+		response.sendRedirect("/shopper/index.jsp");
 	}
 
 }

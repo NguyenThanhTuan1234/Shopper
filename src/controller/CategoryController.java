@@ -41,7 +41,7 @@ public class CategoryController extends HttpServlet {
 	    throws ServletException, IOException {
 		Integer parentId;
 		String name, description;
-		String urlRedirect = "/ElectronicsStore/admin/category.jsp";
+		String urlRedirect = "/shopper/admin/category.jsp";
 		
 		parentId = Integer.valueOf(request.getParameter("item"));
 		name = request.getParameter("categoryName");
