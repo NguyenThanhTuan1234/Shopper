@@ -127,36 +127,30 @@
 				<div class="navbar-inner main-menu">				
 					<a href="index.jsp" class="logo pull-left"><img src="themes/images/logo.png" class="site_logo" alt=""></a>
 					<nav id="menu" class="pull-right">
-					
-						<!--  <li class="active"><a href="index.jsp"><i> </i>Trang chủ</a></li> -->
+						<ul>
 						<%
 							for (Category category : categoryDao.getListCategory()) {
 						%>
-						<ul>
-						<li><%=category.getName()%>
-							<ul>
+							<li><%=category.getName()%> | 			
+								<ul>
 								<%
 									ArrayList<SubCategory> listSubCategory = (ArrayList) categoryMap.get(category.getId());
 										if (listSubCategory != null) {
 
 											for (SubCategory subcategory : listSubCategory) {
 								%>
-									<li><a href="products.jsp?sub_category=<%=subcategory.getId()%>&sub_category_name=<%=subcategory.getName()%>&page=1"><%=subcategory.getName()%></a>
-									</li>							
+								<li><a href="products.jsp?sub_category=<%=subcategory.getId()%>&sub_category_name=<%=subcategory.getName()%>&page=1"><%=subcategory.getName()%></a>
+									</li>
 								<%
-									}
 										}
-								%>
-
-							</ul>
-						</li>
-						</ul>
+										}
+								%>							
+								</ul>
+							</li>	
 						<%
 							}
 						%>
-						
-						<!--  
-						<ul>
+							<!--  
 							<li><a href="./products.html">Woman</a>					
 								<ul>
 									<li><a href="./products.html">Lacinia nibh</a></li>									
@@ -175,8 +169,9 @@
 							<li><a href="./products.html">Hangbag</a></li>
 							<li><a href="./products.html">Best Seller</a></li>
 							<li><a href="./products.html">Top Seller</a></li>
+							-->
 						</ul>
-						-->
+						
 					</nav>
 				</div>
 			</section>
