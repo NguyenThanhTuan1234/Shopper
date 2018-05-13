@@ -1,3 +1,13 @@
+<%@page import="entities.Item"%>
+<%@page import="java.util.Map"%>
+<%@page import="entities.Cart"%>
+<%@page import="entities.Account"%>
+<%@page import="entities.SubCategory"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="dao.SubCategoryDao"%>
+<%@page import="entities.Category"%>
+<%@page import="dao.CategoryDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -33,6 +43,23 @@
 </head>
 <body>
 	
+	<%
+		CategoryDao categoryDao = new CategoryDao();
+		SubCategoryDao subCategoryDao = new SubCategoryDao();
+		HashMap<Integer, ArrayList<SubCategory>> categoryMap = subCategoryDao.getCategoryMap();
+		Account account = null;
+		if (session.getAttribute("account") != null) {
+			account = (Account) session.getAttribute("account");
+		}
+		Cart cart;
+		if (session.getAttribute("cart") != null) {
+			cart = (Cart) session.getAttribute("cart");
+		} else {
+			cart = new Cart();
+			session.setAttribute("cart", cart);
+		}
+	%>
+	
 	<jsp:include page="header.jsp"></jsp:include>
 	
 		<section class="header_text sub">
@@ -55,6 +82,23 @@
 								</tr>
 							</thead>
 							<tbody>
+							<%
+								for (Map.Entry<Integer, Item> list : cart.getCartItems().entrySet()) {
+							%>
+							<tr>
+									<td><input type="checkbox" value="option1"><a
+														href="CartController?command=remove&product_id=<%=list.getValue().getProduct().getId()%>"
+														style="color: red">Xóa</a></td>
+									<td><a href="single.jsp?product_id=<%=list.getValue().getProduct().getId()%>"><img alt="" src="images/<%=list.getValue().getProduct().getImage()%>"></a></td>
+									<td><a href="single.jsp?product_id=<%=list.getValue().getProduct().getId()%>"><%=list.getValue().getProduct().getName()%></a></td>
+									<td><input type="text" placeholder="<%=list.getValue().getQuantity()%>" class="input-mini"></td>
+									<td><%=list.getValue().getProduct().getPrice()%>VND</td>
+									<td><%=list.getValue().getProduct().getPrice()%>VND</td>
+								</tr>	
+							<%
+								}
+							%>
+							<!--  
 								<tr>
 									<td><input type="checkbox" value="option1"></td>
 									<td><a href="product_detail.html"><img alt="" src="themes/images/ladies/9.jpg"></a></td>
@@ -79,13 +123,14 @@
 									<td>$1,210.00</td>
 									<td>$1,123.00</td>
 								</tr>
+							-->
 								<tr>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
-									<td><strong>$3,600.00</strong></td>
+									<td><strong><%=cart.totalCart()%>VND</strong></td>
 								</tr>		  
 							</tbody>
 						</table>
@@ -104,13 +149,13 @@
 							<strong>Sub-Total</strong>:	$100.00<br>
 							<strong>Eco Tax (-2.00)</strong>: $2.00<br>
 							<strong>VAT (17.5%)</strong>: $17.50<br>
-							<strong>Total</strong>: $119.50<br>
+							<strong>Total</strong>: <%=cart.totalCart()%>VND<br>
 						</p>
 						<hr/>
 						<p class="buttons center">				
 							<button class="btn" type="button">Update</button>
 							<button class="btn" type="button">Continue</button>
-							<button class="btn btn-inverse" type="submit" id="checkout">Checkout</button>
+							<a href="checkout.jsp"><button class="btn btn-inverse" type="submit" id="checkout">Checkout</button></a>
 						</p>					
 					</div>
 					<div class="span3 col">

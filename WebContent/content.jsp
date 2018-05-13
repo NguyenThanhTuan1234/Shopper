@@ -76,14 +76,14 @@
 													<a href="single.jsp?product_id=<%=product.getId()%>" class="title"><%=product.getName() %></a>
 												
 													<!--  <div class="white"> -->
-													<!--  
+													  
 													<a href="CartController?command=addToCart&product_id=<%=product.getId()%>"
 														class="hvr-shutter-in-vertical hvr-shutter-in-vertical2">Mua</a>
 														<p class="dollar">
 													
 															<span class="in-dollar">VND</span><span><%=product.getPrice()%></span>
 												</p>
-												-->
+												
 													<p class="price"><%=product.getPrice()%></p>
 												<!--  <div class="clearfix"></div> -->
 												
