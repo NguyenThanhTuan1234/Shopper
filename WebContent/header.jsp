@@ -37,6 +37,51 @@
 		<script src="themes/js/superfish.js"></script>	
 		<script src="themes/js/jquery.scrolltotop.js"></script>
 
+
+		<script type="application/x-javascript">
+	 		addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+		</script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event) {
+					event.preventDefault();
+					$('html,body').animate({
+						scrollTop : $(this.hash).offset().top
+					}, 1000);
+				});
+			});
+		</script>
+		<!--slider-script-->
+		<script src="js/responsiveslides.min.js"></script>
+		<script>
+			$(function() {
+				$("#slider1").responsiveSlides({
+					auto : true,
+					speed : 500,
+					namespace : "callbacks",
+					pager : true,
+				});
+			});
+		</script>
+		<!--//slider-script-->
+		<script>
+			$(document).ready(function(c) {
+				$('.alert-close').on('click', function(c) {
+					$('.message').fadeOut('slow', function(c) {
+						$('.message').remove();
+					});
+				});
+			});
+		</script>
+		<script>
+			$(document).ready(function(c) {
+				$('.alert-close1').on('click', function(c) {
+					$('.message1').fadeOut('slow', function(c) {
+						$('.message1').remove();
+					});
+				});
+			});
+		</script>
 </head>
 <body>
 	
@@ -86,6 +131,7 @@
 						<%
 							for (Category category : categoryDao.getListCategory()) {
 						%>
+						<ul>
 						<li><%=category.getName()%>
 							<ul>
 								<%
@@ -94,8 +140,8 @@
 
 											for (SubCategory subcategory : listSubCategory) {
 								%>
-								<li><a
-									href="products.jsp?sub_category=<%=subcategory.getId()%>&sub_category_name=<%=subcategory.getName()%>&page=1"><%=subcategory.getName()%></a></li>
+									<li><a href="products.jsp?sub_category=<%=subcategory.getId()%>&sub_category_name=<%=subcategory.getName()%>&page=1"><%=subcategory.getName()%></a>
+									</li>							
 								<%
 									}
 										}
@@ -103,6 +149,7 @@
 
 							</ul>
 						</li>
+						</ul>
 						<%
 							}
 						%>
@@ -132,6 +179,23 @@
 					</nav>
 				</div>
 			</section>
-
+			</div>
+			
+			<script src="themes/js/common.js"></script>
+		<script src="themes/js/jquery.flexslider-min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$(document).ready(function() {
+					$('.flexslider').flexslider({
+						animation: "fade",
+						slideshowSpeed: 4000,
+						animationSpeed: 600,
+						controlNav: false,
+						directionNav: true,
+						controlsContainer: ".flex-container" // the container that holds the flexslider
+					});
+				});
+			});
+		</script>
 </body>
 </html>
