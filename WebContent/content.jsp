@@ -41,12 +41,12 @@
 	<%
 		ProductDao productDao = new ProductDao();
 	%>
-	
+	<div id="wrapper" class="container">
 	<section class="header_text">
 				We stand for top quality templates. Our genuine developers always optimized bootstrap commercial templates. 
 				<br/>Don't miss to use our cheap abd best bootstrap templates.
 			</section>
-			<section class="main-content">
+	<section class="main-content">
 				<div class="row">
 					<div class="span12">													
 						<div class="row">
@@ -315,7 +315,7 @@
 					</div>
 				</div>
 			</section>
-			
+		</div>	
 		<script src="themes/js/common.js"></script>
 		<script src="themes/js/jquery.flexslider-min.js"></script>
 		<script type="text/javascript">

@@ -60,7 +60,7 @@
 	%>
 
 	<jsp:include page="header.jsp"></jsp:include>
-	
+	<div id="wrapper" class="container">
 		<section class="header_text sub">
 			<img class="pageBanner" src="themes/images/pageBanner.png" alt="New products" >
 				<h4><span><%=sub_category_name%></span></h4>
@@ -346,7 +346,7 @@
 					
 				</div>
 			</section>
-	
+	</div>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

@@ -33,7 +33,7 @@
 </head>
 <body>
 		<jsp:include page="header.jsp"></jsp:include>
-						
+		<div id="wrapper" class="container">				
 			
 	<div class="container">
 		<div class="account">
@@ -69,7 +69,7 @@
 			</form>
 		</div>
 	</div>
-						
+		</div>				
 		<jsp:include page="footer.jsp"></jsp:include>
 		
 </body>
