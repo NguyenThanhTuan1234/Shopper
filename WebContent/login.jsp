@@ -35,13 +35,13 @@
 		<jsp:include page="header.jsp"></jsp:include>
 		<div id="wrapper" class="container">		
 			<section class="header_text sub">
-			<img class="pageBanner" src="themes/images/pageBanner.png" alt="New products" >
-				<h4><span>Login or Regsiter</span></h4>
+			<img class="pageBanner" src="themes/images/pagebanner1.jpg" alt="New products" >
+				<h4><span>Đăng nhập * Đăng ký</span></h4>
 			</section>			
 			<section class="main-content">				
 				<div class="row">
 					<div class="span5">					
-						<h4 class="title"><span class="text"><strong>Login</strong> Form</span></h4>
+						<h4 class="title"><span class="text"><strong>Đăng nhập</strong> </span></h4>
 						<form action="AccountController" method="POST">
 							
 							<%
@@ -55,21 +55,23 @@
 							%>
 							<fieldset>
 								<div class="control-group">
-									<label class="control-label">Username</label>
+									<label class="control-label">Tên đăng nhập</label>
 									<div class="controls">
-										<input type="text" placeholder="Enter your username" class="input-xlarge" name="username">
+										<input type="text" placeholder="Tên đăng nhập" class="input-xlarge" name="username">
 									</div>
 								</div>
 								<div class="control-group">
-									<label class="control-label">Username</label>
+									<label class="control-label">Mật khẩu</label>
 									<div class="controls">
-										<input type="password" placeholder="Enter your password" class="input-xlarge" name="password">
+										<input type="password" placeholder="Mật khẩu" class="input-xlarge" name="password">
 									</div>
 								</div>
 								<div class="control-group">
-									<input tabindex="3" class="btn btn-inverse large" type="submit" value="Sign into your account">
+									<input tabindex="3" class="btn btn-inverse large" type="submit" value="Đăng nhập">
 									<hr>
+									<!--  
 									<p class="reset">Recover your <a tabindex="4" href="#" title="Recover your username or password">username or password</a></p>
+									-->
 								</div>
 							</fieldset>
 							<input type="hidden" name="command" value="login">
@@ -77,7 +79,7 @@
 					</div>
 					
 					<div class="span7">
-			<h4 class="title"><span class="text"><strong>Register</strong> Form</span></h4>
+			<h4 class="title"><span class="text"><strong>Đăng ký</strong> </span></h4>
 			<form action="AccountController" method="POST">
 			<fieldset>
 				<%
@@ -90,32 +92,32 @@
 					}
 				%>
 				<div class="control-group">
-					<label class="control-label">Username</label> 
+					<label class="control-label">Tên đăng nhập</label> 
 					<div class="controls">
-						<input type="text" name="username" placeholder="Enter your username" class="input-xlarge">
+						<input type="text" name="username" placeholder="Tên đăng nhập" class="input-xlarge">
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">Password</label> 
+					<label class="control-label">Mật khẩu</label> 
 					<div class="controls">
-						<input type="password" name="password" placeholder="Enter your password" class="input-xlarge">
+						<input type="password" name="password" placeholder="Mật khẩu" class="input-xlarge">
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">Adress</label> 
+					<label class="control-label">Địa chỉ</label> 
 					<div class="controls">
-						<input type="text" name="address" placeholder="Enter your address" class="input-xlarge">
+						<input type="text" name="address" placeholder="Địa chỉ" class="input-xlarge">
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">Phone</label>
+					<label class="control-label">Số điện thoại</label>
 					<div class="controls">
-						<input type="text" name="phone" placeholder="Enter your phone" class="input-xlarge">
+						<input type="text" name="phone" placeholder="Số điện thoại" class="input-xlarge">
 					</div>
 				</div>
 				<div class="clearfix"></div>
 				<div class="actions">
-					<input type="submit" value="Create your account" >
+					<input type="submit" value="Đăng ký" >
 				</div>
 				<input type="hidden" name="command" value="register">
 				</fieldset>				

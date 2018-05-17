@@ -112,11 +112,11 @@
 				<div class="span8">
 					<div class="account pull-right">
 						<ul class="user-menu">				
-							<li><a href="#">Your account</a></li>
-							<li><a href="cart.jsp">Your Cart</a></li>
-							<li><a href="checkout.jsp">Checkout</a></li>					
-							<li><a href="login.jsp">Login</a></li>
-							<li><a href="register.jsp">Register</a></li>		
+							<li><a href="#">Tài khoản </a></li>
+							<li><a href="cart.jsp">Giỏ Hàng</a></li>
+							<li><a href="checkout.jsp">Thanh Toán</a></li>					
+							<li><a href="login.jsp">Đăng Nhập</a></li>
+							<li><a href="register.jsp">Đăng Ký</a></li>		
 						</ul>
 					</div>
 				</div>

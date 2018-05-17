@@ -3,6 +3,14 @@
 <%@page import="dao.ProductRuleDao"%>
 <%@page import="entities.Product"%>
 <%@page import="dao.ProductDao"%>
+<%@page import="entities.Account"%>
+<%@page import="entities.SubCategory"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="dao.SubCategoryDao"%>
+<%@page import="entities.Category"%>
+<%@page import="entities.Cart"%>
+<%@page import="dao.CategoryDao"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -57,7 +65,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<div id="wrapper" class="container">
 		<section class="header_text sub">
-			<img class="pageBanner" src="themes/images/pageBanner.png" alt="New products" >
+			<img class="pageBanner" src="themes/images/pagebanner1.jpg" alt="New products" >
 				<h4><span>Product Detail</span></h4>
 			</section>
 			<section class="main-content">				
@@ -70,15 +78,16 @@
 							</div>
 							<div class="span5">
 								<address>
-									<strong>Name:</strong> <span><%=product.getName()%></span><br>
-									<strong>Product Code:</strong> <span>Product 14</span><br>
-									<strong>Reward Points:</strong> <span>0</span><br>
-									<strong>Availability:</strong> <span>Out Of Stock</span><br>								
+									<strong>Tên sản phẩm:</strong> <span><%=product.getName()%></span><br>
+									<strong>Mã sản phẩm:</strong> <span>Product 14</span><br>
+									<!--  <strong>Reward Points:</strong> <span>0</span><br>-->
+									<!--  <strong>Availability:</strong> <span>Out Of Stock</span><br>	-->							
 								</address>									
-								<h4><strong>Price: <%=product.getPrice()%></strong></h4>
+								<h4><strong>Giá: <%=product.getPrice()%></strong></h4>
 							</div>
 							<div class="span5">
 								<form class="form-inline">
+								<!--  
 									<label class="checkbox">
 										<input type="checkbox" value=""> Option one is this and that
 									</label>
@@ -87,6 +96,7 @@
 									  <input type="checkbox" value=""> Be sure to include why it's great
 									</label>
 									<p>&nbsp;</p>
+									-->
 									<label>Qty:</label>
 									<input type="text" class="span1" placeholder="1">
 									<a href="CartController?command=addToCart&product_id=<%=product.getId() %>" class="btn btn-inverse">
@@ -97,8 +107,8 @@
 						<div class="row">
 							<div class="span9">
 								<ul class="nav nav-tabs" id="myTab">
-									<li class="active"><a href="#home">Description</a></li>
-									<li class=""><a href="#profile">Additional Information</a></li>
+									<li class="active"><a href="#home">Mô tả</a></li>
+									<li class=""><a href="#profile">Thông tin thêm</a></li>
 								</ul>							 
 								<div class="tab-content">
 									<div class="tab-pane active" id="home"><%=product.getDescription()%></div>
@@ -193,26 +203,52 @@
 							</div>
 						</div>
 					</div>
+					<%
+		CategoryDao categoryDao = new CategoryDao();
+		SubCategoryDao subCategoryDao = new SubCategoryDao();
+		HashMap<Integer, ArrayList<SubCategory>> categoryMap = subCategoryDao.getCategoryMap();
+		Account account = null;
+		if (session.getAttribute("account") != null) {
+			account = (Account) session.getAttribute("account");
+		}
+		Cart cart;
+		if (session.getAttribute("cart") != null) {
+			cart = (Cart) session.getAttribute("cart");
+		} else {
+			cart = new Cart();
+			session.setAttribute("cart", cart);
+		}
+	%>
 					<div class="span3 col">
 						<div class="block">	
 							<ul class="nav nav-list">
-								<li class="nav-header">SUB CATEGORIES</li>
-								<li><a href="products.html">Nullam semper elementum</a></li>
-								<li class="active"><a href="products.html">Phasellus ultricies</a></li>
-								<li><a href="products.html">Donec laoreet dui</a></li>
-								<li><a href="products.html">Nullam semper elementum</a></li>
-								<li><a href="products.html">Phasellus ultricies</a></li>
-								<li><a href="products.html">Donec laoreet dui</a></li>
+								<li class="nav-header">DANH MỤC</li>
+						<%
+							for (Category category : categoryDao.getListCategory()) {
+						%>
+							<li><%=category.getName()%> | 			
+								<ul>
+								<%
+									ArrayList<SubCategory> listSubCategory = (ArrayList) categoryMap.get(category.getId());
+										if (listSubCategory != null) {
+
+											for (SubCategory subcategory : listSubCategory) {
+								%>
+								<li><a href="products.jsp?sub_category=<%=subcategory.getId()%>&sub_category_name=<%=subcategory.getName()%>&page=1"><%=subcategory.getName()%></a>
+									</li>
+								<%
+										}
+										}
+								%>							
+								</ul>
+							</li>	
+						<%
+							}
+						%>
 							</ul>
 							<br/>
-							<ul class="nav nav-list below">
-								<li class="nav-header">MANUFACTURES</li>
-								<li><a href="products.html">Adidas</a></li>
-								<li><a href="products.html">Nike</a></li>
-								<li><a href="products.html">Dunlop</a></li>
-								<li><a href="products.html">Yamaha</a></li>
-							</ul>
 						</div>
+						<!--  
 						<div class="block">
 							<h4 class="title">
 								<span class="pull-left"><span class="text">Randomize</span></span>
@@ -250,29 +286,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="block">								
-							<h4 class="title"><strong>Best</strong> Seller</h4>								
-							<ul class="small-product">
-								<li>
-									<a href="#" title="Praesent tempor sem sodales">
-										<img src="themes/images/ladies/1.jpg" alt="Praesent tempor sem sodales">
-									</a>
-									<a href="#">Praesent tempor sem</a>
-								</li>
-								<li>
-									<a href="#" title="Luctus quam ultrices rutrum">
-										<img src="themes/images/ladies/2.jpg" alt="Luctus quam ultrices rutrum">
-									</a>
-									<a href="#">Luctus quam ultrices rutrum</a>
-								</li>
-								<li>
-									<a href="#" title="Fusce id molestie massa">
-										<img src="themes/images/ladies/3.jpg" alt="Fusce id molestie massa">
-									</a>
-									<a href="#">Fusce id molestie massa</a>
-								</li>   
-							</ul>
-						</div>
+						-->
 					</div>
 				</div>
 			</section>			

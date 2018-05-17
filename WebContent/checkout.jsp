@@ -47,17 +47,20 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<div id="wrapper" class="container"> 
 		<section class="header_text sub">
-			<img class="pageBanner" src="themes/images/pageBanner.png" alt="New products" >
-				<h4><span>Check Out</span></h4>
+			<img class="pageBanner" src="themes/images/pagebanner1.jpg" alt="New products" >
+				<h4><span>Thanh Toán</span></h4>
 			</section>	
 			<section class="main-content">
 				<div class="row">
 					<div class="span12">
 						<div class="accordion" id="accordion2">
+							<!--
 							<div class="accordion-group">
+								  
 								<div class="accordion-heading">
 									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">Checkout Options</a>
 								</div>
+								
 								<div id="collapseOne" class="accordion-body in collapse">
 									<div class="accordion-inner">
 										<div class="row-fluid">
@@ -101,7 +104,10 @@
 										</div>
 									</div>
 								</div>
+								
 							</div>
+							-->
+							<!--  
 							<div class="accordion-group">
 								<div class="accordion-heading">
 									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">Account &amp; Billing Details</a>
@@ -211,9 +217,10 @@
 									</div>
 								</div>
 							</div>
+							-->
 							<div class="accordion-group">
 								<div class="accordion-heading">
-									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">Confirm Order</a>
+									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">Xác nhận đặt hàng</a>
 								</div>
 								<div id="collapseThree" class="accordion-body collapse">
 									<div class="accordion-inner">

@@ -39,20 +39,20 @@
 					<div class="span3">
 						<h4>Navigation</h4>
 						<ul class="nav">
-							<li><a href="./index.html">Homepage</a></li>  
-							<li><a href="./about.html">About Us</a></li>
-							<li><a href="./contact.html">Contac Us</a></li>
-							<li><a href="./cart.html">Your Cart</a></li>
-							<li><a href="./register.html">Login</a></li>							
+							<li><a href="./index.html">Trang chủ</a></li>  
+							<li><a href="./about.html">Về chúng tôi</a></li>
+							<li><a href="./contact.html">Liên hệ</a></li>
+							<li><a href="./cart.html">Giỏ hàng</a></li>
+							<li><a href="./register.html">Đăng nhập</a></li>							
 						</ul>					
 					</div>
 					<div class="span4">
-						<h4>My Account</h4>
+						<h4>Tài khoản của tôi</h4>
 						<ul class="nav">
-							<li><a href="#">My Account</a></li>
-							<li><a href="#">Order History</a></li>
-							<li><a href="#">Wish List</a></li>
-							<li><a href="#">Newsletter</a></li>
+							<li><a href="#">Tài khoản</a></li>
+							<li><a href="#">Lịch sử giao dịch</a></li>
+							<!--  <li><a href="#">Wish List</a></li>-->
+							<li><a href="#">Thư mới</a></li>
 						</ul>
 					</div>
 					<div class="span5">
