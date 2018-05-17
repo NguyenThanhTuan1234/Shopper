@@ -66,20 +66,7 @@
 						<div class="row">
 							<div class="span4">
 								<a href="single.jsp?product_id=<%=product.getId()%>" class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" src="images/<%=product.getImage() %>"></a>												
-								<ul class="thumbnails small">								
-									<li class="span1">
-										<a href="themes/images/ladies/2.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 2"><img src="themes/images/ladies/2.jpg" alt=""></a>
-									</li>								
-									<li class="span1">
-										<a href="themes/images/ladies/3.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 3"><img src="themes/images/ladies/3.jpg" alt=""></a>
-									</li>													
-									<li class="span1">
-										<a href="themes/images/ladies/4.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 4"><img src="themes/images/ladies/4.jpg" alt=""></a>
-									</li>
-									<li class="span1">
-										<a href="themes/images/ladies/5.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 5"><img src="themes/images/ladies/5.jpg" alt=""></a>
-									</li>
-								</ul>
+								
 							</div>
 							<div class="span5">
 								<address>
@@ -102,8 +89,8 @@
 									<p>&nbsp;</p>
 									<label>Qty:</label>
 									<input type="text" class="span1" placeholder="1">
-									<a href="CartController?command=addToCart&product_id=<%=product.getId() %>">
-									<button class="btn btn-inverse" type="submit">Add to cart</button></a>
+									<a href="CartController?command=addToCart&product_id=<%=product.getId() %>" class="btn btn-inverse">
+									Add to cart</a>
 								</form>
 							</div>							
 						</div>
@@ -156,25 +143,7 @@
 														<p class="price"><%=product.getPrice()%></p>
 													</div>
 												</li>
-										<!--  
-												<li class="span3">
-													<div class="product-box">
-														<span class="sale_tag"></span>												
-														<a href="product_detail.html"><img alt="" src="themes/images/ladies/5.jpg"></a><br/>
-														<a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
-														<a href="#" class="category">Phasellus consequat</a>
-														<p class="price">$341</p>
-													</div>
-												</li>       
-												<li class="span3">
-													<div class="product-box">												
-														<a href="product_detail.html"><img alt="" src="themes/images/ladies/4.jpg"></a><br/>
-														<a href="product_detail.html" class="title">Praesent tempor sem</a><br/>
-														<a href="#" class="category">Erat gravida</a>
-														<p class="price">$28</p>
-													</div>
-												</li>	
-										-->											
+														
 											</ul>
 										</div>
 										<%

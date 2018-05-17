@@ -4,6 +4,13 @@
 <%@page import="dao.ProductDao"%>
 <%@page import="controller.ProductController"%>
 
+
+<%@page import="dao.CategoryDao"%>
+<%@page import="dao.SubCategoryDao"%>
+<%@page import="entities.*"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.HashMap"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -64,7 +71,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<div id="wrapper" class="container">
 		<section class="header_text sub">
-			<img class="pageBanner" src="themes/images/pageBanner.png" alt="New products" >
+			<img class="pageBanner" src="themes/images/pagebanner1.jpg" alt="New products" >
 				<h4><span><%=sub_category_name%></span></h4>
 			</section>
 			<section class="main-content">
@@ -78,24 +85,18 @@
 									(pageno - 1) * Constant.NUMBER_PRODUCT_PER_PAGE, Constant.NUMBER_PRODUCT_PER_PAGE)) {
 							%>
 								
-							<li class="span3">
+<li class="span3">
 													<div class="product-box">
-														<span class="sale_tag"></span>
-																								
-															<a href="single.jsp?product_id=<%=product.getId()%>"><img alt="" src="images/<%=product.getImage() %>"></a></br>
-														
-															<a href="single.jsp?product_id=<%=product.getId() %>" class="title"><%=productController.shortName(product.getName()) %></a></br>
-														
-														
-														<a href="single.jsp?product_id=<%=product.getId() %>" class="category"><%=product.getDescription()%></a></br>
-														
-														<p class="title"><%=product.getPrice()%> <span>vnđ</span></p>
-														
-															<a href="CartController?command=addToCart&product_id=<%=product.getId()%>"
-														class="title">MUA</a>
-														
+														<a href="single.jsp?product_id=<%=product.getId()%>"
+														class="compare-in "><img src="images/<%=product.getImage() %>" alt="" /> </a></br>
+														<a href="single.jsp?product_id=<%=product.getId()%>" class="title"><%=productController.shortName(product.getName()) %></a></br>
+														<p>
+															<span><%=product.getPrice()%></span><span class="title">vnd</span>
+														</p>
+														<a href="CartController?command=addToCart&product_id=<%=product.getId()%>"
+															class = title>Mua</a>
+										
 													</div>
-												</li> 
 							<%
 								}
 							%>
@@ -140,25 +141,53 @@
 							</ul>
 						</div>
 					</div>
+					
+	<%
+		CategoryDao categoryDao = new CategoryDao();
+		SubCategoryDao subCategoryDao = new SubCategoryDao();
+		HashMap<Integer, ArrayList<SubCategory>> categoryMap = subCategoryDao.getCategoryMap();
+		Account account = null;
+		if (session.getAttribute("account") != null) {
+			account = (Account) session.getAttribute("account");
+		}
+		Cart cart;
+		if (session.getAttribute("cart") != null) {
+			cart = (Cart) session.getAttribute("cart");
+		} else {
+			cart = new Cart();
+			session.setAttribute("cart", cart);
+		}
+	%>
 					<div class="span3 col">
 						<div class="block">	
 							<ul class="nav nav-list">
-								<li class="nav-header">SUB CATEGORIES</li>
-								<li><a href="products.html">Nullam semper elementum</a></li>
-								<li class="active"><a href="products.html">Phasellus ultricies</a></li>
-								<li><a href="products.html">Donec laoreet dui</a></li>
-								<li><a href="products.html">Nullam semper elementum</a></li>
-								<li><a href="products.html">Phasellus ultricies</a></li>
-								<li><a href="products.html">Donec laoreet dui</a></li>
+								
+						<%
+							for (Category category : categoryDao.getListCategory()) {
+						%>
+							<li><%=category.getName()%> | 			
+								<ul>
+								<%
+									ArrayList<SubCategory> listSubCategory = (ArrayList) categoryMap.get(category.getId());
+										if (listSubCategory != null) {
+
+											for (SubCategory subcategory : listSubCategory) {
+								%>
+								<li><a href="products.jsp?sub_category=<%=subcategory.getId()%>&sub_category_name=<%=subcategory.getName()%>&page=1"><%=subcategory.getName()%></a>
+									</li>
+								<%
+										}
+										}
+								%>							
+								</ul>
+							</li>	
+						<%
+							}
+						%>
+							
+						
 							</ul>
 							<br/>
-							<ul class="nav nav-list below">
-								<li class="nav-header">MANUFACTURES</li>
-								<li><a href="products.html">Adidas</a></li>
-								<li><a href="products.html">Nike</a></li>
-								<li><a href="products.html">Dunlop</a></li>
-								<li><a href="products.html">Yamaha</a></li>
-							</ul>
 						</div>
 						<div class="block">
 							<h4 class="title">

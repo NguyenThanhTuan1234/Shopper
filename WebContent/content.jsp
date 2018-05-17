@@ -69,65 +69,22 @@
 											<%
 												for (Product product : productDao.getLastProduct(Constant.NUMBER_PRODUCT_PER_PAGE)) {
 											%>
-												
 												<li class="span3">
 													<div class="product-box">
-														<span class="sale_tag"></span>
-																								
-															<a href="single.jsp?product_id=<%=product.getId()%>"><img alt="" src="images/<%=product.getImage() %>"></a></br>
-														
-															<a href="single.jsp?product_id=<%=product.getId() %>" class="title"><%=productController.shortName(product.getName()) %></a></br>
-														
-														
-														<a href="single.jsp?product_id=<%=product.getId() %>" class="category"><%=product.getDescription()%></a></br>
-														
-														<p class="title"><%=product.getPrice()%> <span>vnđ</span></p>
-														
-															<a href="CartController?command=addToCart&product_id=<%=product.getId()%>"
-														class="title">MUA</a>
-														
+														<a href="single.jsp?product_id=<%=product.getId()%>"
+														class="compare-in "><img src="images/<%=product.getImage() %>" alt="" /> </a></br>
+														<a href="single.jsp?product_id=<%=product.getId()%>" class="title"><%=productController.shortName(product.getName()) %></a></br>
+														<p>
+															<span><%=product.getPrice()%></span><span class="title">vnd</span>
+														</p>
+														<a href="CartController?command=addToCart&product_id=<%=product.getId()%>"
+															class = title>Mua</a>
+										
 													</div>
-												</li>
 											<%
 												}
 											%>
 											
-											<!--  											
-												<li class="span3">
-													<div class="product-box">
-														<span class="sale_tag"></span>
-														<p><a href="product_detail.html"><img src="themes/images/ladies/1.jpg" alt="" /></a></p>
-														<a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
-														<a href="products.html" class="category">Commodo consequat</a>
-														<p class="price">$17.25</p>
-													</div>
-												</li>
-												<li class="span3">
-													<div class="product-box">
-														<span class="sale_tag"></span>
-														<p><a href="product_detail.html"><img src="themes/images/ladies/2.jpg" alt="" /></a></p>
-														<a href="product_detail.html" class="title">Quis nostrud exerci tation</a><br/>
-														<a href="products.html" class="category">Quis nostrud</a>
-														<p class="price">$32.50</p>
-													</div>
-												</li>
-												<li class="span3">
-													<div class="product-box">
-														<p><a href="product_detail.html"><img src="themes/images/ladies/3.jpg" alt="" /></a></p>
-														<a href="product_detail.html" class="title">Know exactly turned</a><br/>
-														<a href="products.html" class="category">Quis nostrud</a>
-														<p class="price">$14.20</p>
-													</div>
-												</li>
-												<li class="span3">
-													 <div class="product-box"> 
-														<p><a href="product_detail.html"><img src="themes/images/ladies/4.jpg" alt="" /></a></p>
-														<a href="product_detail.html" class="title">You think fast</a><br/>
-														<a href="products.html" class="category">World once</a>
-														<p class="price">$31.45</p>
-													</div>
-												</li>
-												-->
 											</ul>
 										</div>
 										<div class="item">
