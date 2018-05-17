@@ -57,13 +57,13 @@
 								<div class="control-group">
 									<label class="control-label">Username</label>
 									<div class="controls">
-										<input type="text" class="input-xlarge" name="username">
+										<input type="text" placeholder="Enter your username" class="input-xlarge" name="username">
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label">Username</label>
 									<div class="controls">
-										<input type="password" class="input-xlarge" name="password">
+										<input type="password" placeholder="Enter your password" class="input-xlarge" name="password">
 									</div>
 								</div>
 								<div class="control-group">
@@ -76,51 +76,52 @@
 						</form>					
 					</div>
 					
-					<div class="span7">					
-						<h4 class="title"><span class="text"><strong>Register</strong> Form</span></h4>
-						<form action="AccountController" method="POST" class="form-stacked">
-						<%
-							if (request.getAttribute("error_register") != null) {
-						%>
-							<div class="error-message">
-								<p style="color:red"><%=request.getAttribute("error_register") %></p>
-							</div>
-						<%
-							}
-						%>
-							<fieldset>
-								<div class="control-group">
-									<label class="control-label">Username</label>
-									<div class="controls">
-										<input type="text" placeholder="Enter your username" class="input-xlarge">
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label">Password:</label>
-									<div class="controls">
-										<input type="password" placeholder="Enter your password" class="input-xlarge">
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label">Address:</label>
-									<div class="controls">
-										<input type="text" placeholder="Enter your Address" class="input-xlarge">
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label">Phone:</label>
-									<div class="controls">
-										<input type="text" placeholder="Enter your Phone" class="input-xlarge">
-									</div>
-								</div>							                            
-								<div class="control-group">
-									<p>Now that we know who you are. I'm not a mistake! In a comic, you know how you can tell who the arch-villain's going to be?</p>
-								</div>
-								<hr>
-								<div class="actions"><input tabindex="9" class="btn btn-inverse large" type="submit" value="register"></div>
-							</fieldset>
-						</form>					
-					</div>		
+					<div class="span7">
+			<h4 class="title"><span class="text"><strong>Register</strong> Form</span></h4>
+			<form action="AccountController" method="POST">
+			<fieldset>
+				<%
+					if (request.getAttribute("error_register") != null) {
+				%>
+				<div class="error-message">
+					<p style="color:red"><%=request.getAttribute("error_register") %></p>
+				</div>
+				<%
+					}
+				%>
+				<div class="control-group">
+					<label class="control-label">Username</label> 
+					<div class="controls">
+						<input type="text" name="username" placeholder="Enter your username" class="input-xlarge">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Password</label> 
+					<div class="controls">
+						<input type="password" name="password" placeholder="Enter your password" class="input-xlarge">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Adress</label> 
+					<div class="controls">
+						<input type="text" name="address" placeholder="Enter your address" class="input-xlarge">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Phone</label>
+					<div class="controls">
+						<input type="text" name="phone" placeholder="Enter your phone" class="input-xlarge">
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<div class="actions">
+					<input type="submit" value="Create your account" >
+				</div>
+				<input type="hidden" name="command" value="register">
+				</fieldset>				
+			</form>
+		</div>
+					
 					
 			</section>
 		</div>					

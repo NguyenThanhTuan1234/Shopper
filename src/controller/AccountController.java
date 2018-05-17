@@ -65,8 +65,8 @@ public class AccountController extends HttpServlet {
 				account = new Account();
 				account.setUsername(request.getParameter("username"));
 				account.setPassword(MD5Algorithm.encryption(request.getParameter("password")));
-//				account.setAddress(request.getParameter("address"));
-//				account.setPhone(request.getParameter("phone"));
+				account.setAddress(request.getParameter("address"));
+				account.setPhone(request.getParameter("phone"));
 				accountDao.insertAccount(account);
 				account = accountDao.getAccount(request.getParameter("username"));
 				session.setAttribute("account", account);

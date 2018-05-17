@@ -1,6 +1,7 @@
 <%@page import="ultils.Constant"%>
 <%@page import="entities.Product"%>
 <%@page import="dao.ProductDao"%>
+<%@page import="controller.ProductController"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -40,12 +41,15 @@
 	
 	<%
 		ProductDao productDao = new ProductDao();
+		ProductController productController = new ProductController();
 	%>
 	<div id="wrapper" class="container">
+	<!--  
 	<section class="header_text">
 				We stand for top quality templates. Our genuine developers always optimized bootstrap commercial templates. 
 				<br/>Don't miss to use our cheap abd best bootstrap templates.
 			</section>
+	-->		
 	<section class="main-content">
 				<div class="row">
 					<div class="span12">													
@@ -65,29 +69,25 @@
 											<%
 												for (Product product : productDao.getLastProduct(Constant.NUMBER_PRODUCT_PER_PAGE)) {
 											%>
-												<li class "span3"><div class="product-box">
-												<span class="sale_tag"></span>
-												<p>
-													<a href="single.jsp?product_id=<%=product.getId()%>"
-														class=""><img src="images/<%=product.getImage() %>" alt="" /> </a>
-												<!-- 	<div class="top-content bag">  -->
-												</p>
 												
-													<a href="single.jsp?product_id=<%=product.getId()%>" class="title"><%=product.getName() %></a>
-												
-													<!--  <div class="white"> -->
-													  
-													<a href="CartController?command=addToCart&product_id=<%=product.getId()%>"
-														class="hvr-shutter-in-vertical hvr-shutter-in-vertical2">Mua</a>
-														<p class="dollar">
-													
-															<span class="in-dollar">VND</span><span><%=product.getPrice()%></span>
-												</p>
-												
-													<p class="price"><%=product.getPrice()%></p>
-												<!--  <div class="clearfix"></div> -->
-												
-												</div></li>
+												<li class="span3">
+													<div class="product-box">
+														<span class="sale_tag"></span>
+																								
+															<a href="single.jsp?product_id=<%=product.getId()%>"><img alt="" src="images/<%=product.getImage() %>"></a></br>
+														
+															<a href="single.jsp?product_id=<%=product.getId() %>" class="title"><%=productController.shortName(product.getName()) %></a></br>
+														
+														
+														<a href="single.jsp?product_id=<%=product.getId() %>" class="category"><%=product.getDescription()%></a></br>
+														
+														<p class="title"><%=product.getPrice()%> <span>vnđ</span></p>
+														
+															<a href="CartController?command=addToCart&product_id=<%=product.getId()%>"
+														class="title">MUA</a>
+														
+													</div>
+												</li>
 											<%
 												}
 											%>
@@ -132,6 +132,39 @@
 										</div>
 										<div class="item">
 											<ul class="thumbnails">
+											
+											
+											<%
+												for (Product product : productDao.getLastProduct(Constant.NUMBER_PRODUCT_PER_PAGE)) {
+											%>
+												<li class "span3"><div class="product-box">
+												<span class="sale_tag"></span>
+												<p>
+													<a href="single.jsp?product_id=<%=product.getId()%>"
+														class=""><img src="images/<%=product.getImage() %>" alt="" /> </a>
+												<!-- 	<div class="top-content bag">  -->
+												</p>
+												
+													<a href="single.jsp?product_id=<%=product.getId()%>" class="title"><%= productController.shortName(product.getName()) %></a>
+												
+													<!--  <div class="white"> -->
+													  
+													<a href="CartController?command=addToCart&product_id=<%=product.getId()%>"
+														class="hvr-shutter-in-vertical hvr-shutter-in-vertical2">Mua</a>
+														<p class="dollar">
+													
+															<span class="in-dollar">VND</span><span><%=product.getPrice()%></span>
+												</p>
+												
+													<p class="price"><%=product.getPrice()%></p>
+												<!--  <div class="clearfix"></div> -->
+												
+												</div></li>
+											<%
+												}
+											%>
+											
+											<!--  
 												<li class="span3">
 													<div class="product-box">
 														<p><a href="product_detail.html"><img src="themes/images/ladies/5.jpg" alt="" /></a></p>
@@ -163,7 +196,8 @@
 														<a href="products.html" class="category">Quis nostrud</a>
 														<p class="price">$35.50</p>
 													</div>
-												</li>																																	
+												</li>
+												-->																																	
 											</ul>
 										</div>
 									</div>							

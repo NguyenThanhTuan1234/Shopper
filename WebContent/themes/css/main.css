@@ -429,6 +429,8 @@ section.navbar{
 	z-index: 100;
 	top:0;
 	left:0;
+	height: 400px;
+	width: 300px;
 }
 .product-box:hover{
 	background-color:#eb4800;

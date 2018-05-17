@@ -33,8 +33,54 @@
 </head>
 <body>
 		<jsp:include page="header.jsp"></jsp:include>
-		<div id="wrapper" class="container">				
-			
+		<div id="wrapper" class="container">	
+		
+		<div class="span7">
+			<h4 class="title"><span class="text"><strong>Register</strong> Form</span></h4>
+			<form action="AccountController" method="POST">
+			<fieldset>
+				<%
+					if (request.getAttribute("error_register") != null) {
+				%>
+				<div class="error-message">
+					<p style="color:red"><%=request.getAttribute("error_register") %></p>
+				</div>
+				<%
+					}
+				%>
+				<div class="control-group">
+					<label class="control-label">Username</label> 
+					<div class="controls">
+						<input type="text" name="username" placeholder="Enter your username" class="input-xlarge">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Password</label> 
+					<div class="controls">
+						<input type="password" name="password" placeholder="Enter your password" class="input-xlarge">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Adress</label> 
+					<div class="controls">
+						<input type="text" name="address" placeholder="Enter your address" class="input-xlarge">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Phone</label>
+					<div class="controls">
+						<input type="text" name="phone" placeholder="Enter your phone" class="input-xlarge">
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<div class="actions">
+					<input type="submit" value="Create your account" >
+				</div>
+				<input type="hidden" name="command" value="register">
+				</fieldset>				
+			</form>
+		</div>			
+	<!--    		
 	<div class="container">
 		<div class="account">
 			<h2 class="account-in">Đăng Ký</h2>
@@ -69,6 +115,7 @@
 			</form>
 		</div>
 	</div>
+	-->
 		</div>				
 		<jsp:include page="footer.jsp"></jsp:include>
 		

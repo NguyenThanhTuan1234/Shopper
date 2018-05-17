@@ -35,7 +35,7 @@ public class AccountDao extends DbManager{
 	}
 	
 	public boolean insertAccount(Account account) {
-		String sql = "insert into account (username, password, address, phone, role) values(?, ?, ?, ?, ?)";
+		String sql = "insert into account (username, password, address, phone, role) values(?, ?, N?, ?, ?)";
 		PreparedStatement pstm;
 		
 		openConnection();

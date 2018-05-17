@@ -99,4 +99,11 @@ public class ProductController extends HttpServlet {
 		}
 		return "";
 	}
+	
+	public String shortName(String name) {
+		int max_len = 30;
+		if(name.length()>max_len)
+			return name.substring(0, max_len-3)+"...";
+		else return name;
+	}
 }
