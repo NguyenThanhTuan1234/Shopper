@@ -142,7 +142,7 @@ public class BillLogic {
 	public static void main(String []args) {
 		BillLogic billLogic = new BillLogic();
 		billLogic.writeTransactionToFile(Constant.NUMBER_TRANSACTION, Constant.PRODUCT_INPUT_FILE, Constant.SUB_CATEGORY_INPUT_FILE);
-		billLogic.exportBillToFile("bill_export");
-//		billLogic.importBillFromFile("bill_export");
+//		billLogic.exportBillToFile("bill_export");
+		billLogic.importBillFromFile("bill_export");
 	}
 }

@@ -97,10 +97,10 @@
 									</label>
 									<p>&nbsp;</p>
 									-->
-									<label>Qty:</label>
+									<label>Số lượng:</label>
 									<input type="text" class="span1" placeholder="1">
 									<a href="CartController?command=addToCart&product_id=<%=product.getId() %>" class="btn btn-inverse">
-									Add to cart</a>
+									Thêm vào giỏ hàng</a>
 								</form>
 							</div>							
 						</div>
