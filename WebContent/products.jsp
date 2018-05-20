@@ -201,8 +201,7 @@
 										<a class="left button" href="#myCarousel-1" data-slide="prev"></a><a class="right button" href="#myCarousel-1" data-slide="next"></a>
 									</span>
 								</h4>
-								<div id="myCarousel-1" class="carousel slide">
-									<div class="carousel-inner">
+								
 									<%
 										Product product;
 										int count = 0;
@@ -212,6 +211,7 @@
 									%>
 										<div class="active item">
 											<ul class="thumbnails listing-products">
+											
 												<li class="span3">
 													<div class="product-box">
 														<span class="sale_tag"></span>
@@ -236,6 +236,9 @@
 										<%
 											}
 										%>
+										</div>
+										
+										
 			
 					
 				</div>

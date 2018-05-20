@@ -163,7 +163,7 @@ public class AlgorithmsLogic {
 	
 	public static void main(String []args) {
 		AlgorithmsLogic algo = new AlgorithmsLogic();
-			algo.generateRulesByFPGrowth("/home/tuankun/workspace/shopper/product_input", 0.5, 0.5);
+			algo.generateRulesByFPGrowth(Constant.SUB_CATEGORY_INPUT_FILE, 0.5, 0.5);
 			System.out.println("DOne");
 //		algo.generateRulesByPascal("product_input", 0.3, 0.33);
 //		algo.generateRulesByApriori("/home/tuankun/workspace/shopper/product_input", 0.1, 0.3);

@@ -49,7 +49,7 @@ public class AlgorithmController extends HttpServlet {
 			subCategoryRuleLogic.insertRules(rules);
 			File f = new File(Constant.SUB_CATEGORY_INPUT_FILE);
 		    f.delete();
-			url = "admin/sub_category_result.jsp";
+			url = "admin/table1.jsp";
 			
 		}else {
 			ProductRuleLogic productRuleLogic = new ProductRuleLogic();
@@ -59,7 +59,7 @@ public class AlgorithmController extends HttpServlet {
 			productRuleLogic.insertRules(rules);
 			File f = new File(Constant.PRODUCT_INPUT_FILE);
 		    f.delete();
-		    url = "admin/product_result.jsp";
+		    url = "admin/table.jsp";
 		}
 		
 		

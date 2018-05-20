@@ -151,6 +151,8 @@
 														<a href="single.jsp?product_id=<%=product.getId() %>" class="title"><%=product.getName() %></a><br/>
 														<a href="#" class="category">Suspendisse aliquet</a>
 														<p class="price"><%=product.getPrice()%></p>
+														<a href="CartController?command=addToCart&product_id=<%=product.getId()%>"
+															class = title>Mua</a>
 													</div>
 												</li>
 														
