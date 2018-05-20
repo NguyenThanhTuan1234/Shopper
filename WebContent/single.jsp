@@ -66,7 +66,7 @@
 	<div id="wrapper" class="container">
 		<section class="header_text sub">
 			<img class="pageBanner" src="themes/images/pagebanner1.jpg" alt="New products" >
-				<h4><span>Product Detail</span></h4>
+				<h4><span>Thông tin chi tiết</span></h4>
 			</section>
 			<section class="main-content">				
 				<div class="row">						
@@ -131,7 +131,7 @@
 							<div class="span9">	
 								<br>
 								<h4 class="title">
-									<span class="pull-left"><span class="text"><strong>Related</strong> Products</span></span>
+									<span class="pull-left"><span class="text"><strong>Sách</strong> Liên quan</span></span>
 									<span class="pull-right">
 										<a class="left button" href="#myCarousel-1" data-slide="prev"></a><a class="right button" href="#myCarousel-1" data-slide="next"></a>
 									</span>

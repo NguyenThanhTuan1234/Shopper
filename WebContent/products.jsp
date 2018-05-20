@@ -85,7 +85,7 @@
 									(pageno - 1) * Constant.NUMBER_PRODUCT_PER_PAGE, Constant.NUMBER_PRODUCT_PER_PAGE)) {
 							%>
 								
-<li class="span3">
+													<li class="span3">
 													<div class="product-box">
 														<a href="single.jsp?product_id=<%=product.getId()%>"
 														class="compare-in "><img src="images/<%=product.getImage() %>" alt="" /> </a></br>
@@ -196,27 +196,27 @@
 					<div class="span9">	
 								<br>
 								<h4 class="title">
-									<span class="pull-left"><span class="text"><strong>Related</strong> Products</span></span>
+									<span class="pull-left"><span class="text"><strong>Sách</strong> liên quan</span></span>
 									<span class="pull-right">
 										<a class="left button" href="#myCarousel-1" data-slide="prev"></a><a class="right button" href="#myCarousel-1" data-slide="next"></a>
 									</span>
 								</h4>
-								
-									<%
+								<div id="myCarousel-1" class="carousel slide">
+									<div class="carousel-inner">
+										<div class="active item">
+											<ul class="thumbnails listing-products">
+												
+												<%
 										Product product;
 										int count = 0;
 											for (int subCategoryId : subCategoryRuleDao.getRuleList(Integer.parseInt(sub_category_id))) {
 												if((count ++) == 4) break;
 												product = productDao.getProductBySubCategoryId(subCategoryId);
 									%>
-										<div class="active item">
-											<ul class="thumbnails listing-products">
-											
-												<li class="span3">
+													<li class="span3">
 													<div class="product-box">
-														<span class="sale_tag"></span>
-																								
-															<a href="single.jsp?product_id=<%=product.getId()%>"><img alt="" src="images/<%=product.getImage() %>"></a></br>
+														<span class="sale_tag"></span>												
+														<a href="single.jsp?product_id=<%=product.getId()%>"><img alt="" src="images/<%=product.getImage() %>"></a></br>
 														
 															<a href="single.jsp?product_id=<%=product.getId() %>" class="title"><%=productController.shortName(product.getName()) %></a></br>
 														
@@ -227,19 +227,20 @@
 														
 															<a href="CartController?command=addToCart&product_id=<%=product.getId()%>"
 														class="title">MUA</a>
-														
 													</div>
-												</li>
-																		
-											</ul>
-										</div>
-										<%
+													<%
 											}
 										%>
+												</li>
+																							
+											</ul>
 										</div>
 										
-										
-			
+									</div>
+								</div>
+							</div>
+					
+					
 					
 				</div>
 			</section>

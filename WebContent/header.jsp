@@ -112,11 +112,26 @@
 				<div class="span8">
 					<div class="account pull-right">
 						<ul class="user-menu">				
-							<li><a href="#">Tài khoản </a></li>
+							<%
+								if (account != null) {
+									if (account.getRole() == 1) {
+							%>
+							<li><a href="admin/algorithm.jsp">Quản lý</a></li>
+							<%
+								}
+							%>
+							<li><a href="AccountController?command=logout"><%=account.getUsername()%></a></li>
+							<%
+								} else {
+							%>
+							<li><a href="login.jsp">Tài khoản</a></li>
+							
+							<%
+								}
+							%>
 							<li><a href="cart.jsp">Giỏ Hàng</a></li>
 							<li><a href="checkout.jsp">Thanh Toán</a></li>					
-							<li><a href="login.jsp">Đăng Nhập</a></li>
-							<li><a href="register.jsp">Đăng Ký</a></li>		
+							<li><a href="login.jsp">Đăng Nhập / Đăng ký</a></li>	
 						</ul>
 					</div>
 				</div>
