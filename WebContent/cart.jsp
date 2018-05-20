@@ -69,7 +69,7 @@
 			<section class="main-content">				
 				<div class="row">
 					<div class="span9">					
-						<h4 class="title"><span class="text"><strong>Your</strong> Cart</span></h4>
+						<h4 class="title"><span class="text"><strong>Giỏ hàng</strong> của bạn</span></h4>
 						<table class="table table-striped">
 							<thead>
 								<tr>
@@ -86,8 +86,7 @@
 								for (Map.Entry<Integer, Item> list : cart.getCartItems().entrySet()) {
 							%>
 							<tr>
-									<td><input type="checkbox" value="option1"><a
-														href="CartController?command=remove&product_id=<%=list.getValue().getProduct().getId()%>"
+									<td><a href="CartController?command=remove&product_id=<%=list.getValue().getProduct().getId()%>"
 														style="color: red">Xóa</a></td>
 									<td><a href="single.jsp?product_id=<%=list.getValue().getProduct().getId()%>"><img alt="" src="images/<%=list.getValue().getProduct().getImage()%>"></a></td>
 									<td><a href="single.jsp?product_id=<%=list.getValue().getProduct().getId()%>"><%=list.getValue().getProduct().getName()%></a></td>

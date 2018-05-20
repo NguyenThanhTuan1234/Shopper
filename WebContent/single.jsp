@@ -79,7 +79,7 @@
 							<div class="span5">
 								<address>
 									<strong>Tên sản phẩm:</strong> <span><%=product.getName()%></span><br>
-									<strong>Mã sản phẩm:</strong> <span>Product 14</span><br>
+									<strong>Mã sản phẩm:</strong> <span>Product <%=product.getId()%></span><br>
 									<!--  <strong>Reward Points:</strong> <span>0</span><br>-->
 									<!--  <strong>Availability:</strong> <span>Out Of Stock</span><br>	-->							
 								</address>									
@@ -138,12 +138,13 @@
 								</h4>
 								<div id="myCarousel-1" class="carousel slide">
 									<div class="carousel-inner">
+									<div class="active item">
+											<ul class="thumbnails listing-products">
 									<%
 										for (int productId : productRuleDao.getRule(Integer.parseInt(product_id), Constant.NUMBER_ITEM)) {
 											product = productMap.get(productId);
 									%>
-										<div class="active item">
-											<ul class="thumbnails listing-products">
+										
 												<li class="span3">
 													<div class="product-box">
 														<span class="sale_tag"></span>												
@@ -154,13 +155,14 @@
 														<a href="CartController?command=addToCart&product_id=<%=product.getId()%>"
 															class = title>Mua</a>
 													</div>
+													<%
+											}
+										%>
 												</li>
 														
 											</ul>
 										</div>
-										<%
-											}
-										%>
+										
 										<div class="item">
 											<ul class="thumbnails listing-products">
 												<li class="span3">

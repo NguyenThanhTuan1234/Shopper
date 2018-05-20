@@ -87,6 +87,29 @@ public class AccountDao extends DbManager{
 		
 		return account;
 	}
+	
+	public int getNumberAccount(){
+		String sql = "select * from account";
+		PreparedStatement pstm;
+		ResultSet rs;
+		openConnection();
+		int num = 0;
+		if(connection != null) {
+			try {
+				pstm = connection.prepareStatement(sql);
+				rs = pstm.executeQuery();
+				while(rs.next()) {
+					num++;
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return num;
+	}
+	
 	public Account checkAccount(String username, String password) {
 		String sql = "select * from account where username = ? and password = ?";
 		PreparedStatement pstm;

@@ -57,7 +57,7 @@
 						<div class="row">
 							<div class="span12">
 								<h4 class="title">
-									<span class="pull-left"><span class="text"><span class="line">Feature <strong>Products</strong></span></span></span>
+									<span class="pull-left"><span class="text"><span class="line">Sách <strong>Mới</strong></span></span></span>
 									<span class="pull-right">
 										<a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
 									</span>
@@ -257,8 +257,10 @@
 								<div class="service">
 									<div class="responsive">	
 										<img src="themes/images/feature_img_2.png" alt="" />
-										<h4>MODERN <strong>DESIGN</strong></h4>
+										<h4>SÁCH <strong>MỚI</strong></h4>
+										<!--
 										<p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>									
+										-->
 									</div>
 								</div>
 							</div>
@@ -266,8 +268,10 @@
 								<div class="service">
 									<div class="customize">			
 										<img src="themes/images/feature_img_1.png" alt="" />
-										<h4>FREE <strong>SHIPPING</strong></h4>
+										<h4>MIỄN PHÍ <strong>VẬN CHUYỂN</strong></h4>
+										<!--
 										<p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
+										-->
 									</div>
 								</div>
 							</div>
@@ -275,8 +279,9 @@
 								<div class="service">
 									<div class="support">	
 										<img src="themes/images/feature_img_3.png" alt="" />
-										<h4>24/7 LIVE <strong>SUPPORT</strong></h4>
-										<p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
+										<h4>HỖ TRỢ <strong>24/7</uyểnstrong></h4>
+										<!--  <p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
+										-->
 									</div>
 								</div>
 							</div>	
@@ -285,25 +290,25 @@
 				</div>
 			</section>
 			<section class="our_client">
-				<h4 class="title"><span class="text">Manufactures</span></h4>
+				<h4 class="title"><span class="text">Liên kết</span></h4>
 				<div class="row">					
 					<div class="span2">
-						<a href="#"><img alt="" src="themes/images/clients/14.png"></a>
+						<a href="#"><img alt="" src="themes/images/clients/alphabook1.jpg"></a>
 					</div>
 					<div class="span2">
-						<a href="#"><img alt="" src="themes/images/clients/35.png"></a>
+						<a href="#"><img alt="" src="themes/images/clients/kim dong1.jpg"></a>
 					</div>
 					<div class="span2">
-						<a href="#"><img alt="" src="themes/images/clients/1.png"></a>
+						<a href="#"><img alt="" src="themes/images/clients/b1.jpg"></a>
 					</div>
 					<div class="span2">
-						<a href="#"><img alt="" src="themes/images/clients/2.png"></a>
+						<a href="#"><img alt="" src="themes/images/clients/nn2.jpg"></a>
 					</div>
 					<div class="span2">
-						<a href="#"><img alt="" src="themes/images/clients/3.png"></a>
+						<a href="#"><img alt="" src="themes/images/clients/tr1.jpg"></a>
 					</div>
 					<div class="span2">
-						<a href="#"><img alt="" src="themes/images/clients/4.png"></a>
+						<a href="#"><img alt="" src="themes/images/clients/hanoi1.png"></a>
 					</div>
 				</div>
 			</section>
