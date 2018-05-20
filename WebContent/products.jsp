@@ -1,3 +1,4 @@
+<%@page import="logic.ProductLogic"%>
 <%@page import="dao.SubCategoryRuleDao"%>
 <%@page import="ultils.Constant"%>
 <%@page import="entities.Product"%>
@@ -46,7 +47,8 @@
 </head>
 <body>
 
-	<%
+	<%	
+		ProductLogic productLogic = new ProductLogic();
 		ProductController productController = new ProductController();
 		ProductDao productDao = new ProductDao();
 		SubCategoryRuleDao subCategoryRuleDao = new SubCategoryRuleDao();
@@ -89,7 +91,7 @@
 													<div class="product-box">
 														<a href="single.jsp?product_id=<%=product.getId()%>"
 														class="compare-in "><img src="images/<%=product.getImage() %>" alt="" /> </a></br>
-														<a href="single.jsp?product_id=<%=product.getId()%>" class="title"><%=productController.shortName(product.getName()) %></a></br>
+														<a href="single.jsp?product_id=<%=product.getId()%>" class="title"><%=productLogic.shortName(product.getName()) %></a></br>
 														<p>
 															<span><%=product.getPrice()%></span><span class="title">vnd</span>
 														</p>
@@ -218,7 +220,7 @@
 														<span class="sale_tag"></span>												
 														<a href="single.jsp?product_id=<%=product.getId()%>"><img alt="" src="images/<%=product.getImage() %>"></a></br>
 														
-															<a href="single.jsp?product_id=<%=product.getId() %>" class="title"><%=productController.shortName(product.getName()) %></a></br>
+															<a href="single.jsp?product_id=<%=product.getId() %>" class="title"><%=productLogic.shortName(product.getName()) %></a></br>
 														
 														
 														<a href="single.jsp?product_id=<%=product.getId() %>" class="category"><%=product.getDescription()%></a></br>

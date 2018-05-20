@@ -1,3 +1,4 @@
+<%@page import="logic.ProductLogic"%>
 <%@page import="ultils.Constant"%>
 <%@page import="entities.Product"%>
 <%@page import="dao.ProductDao"%>
@@ -41,7 +42,7 @@
 	
 	<%
 		ProductDao productDao = new ProductDao();
-		ProductController productController = new ProductController();
+		ProductLogic productLogic = new ProductLogic();
 	%>
 	<div id="wrapper" class="container">
 	<!--  
@@ -73,7 +74,7 @@
 													<div class="product-box">
 														<a href="single.jsp?product_id=<%=product.getId()%>"
 														class="compare-in "><img src="images/<%=product.getImage() %>" alt="" /> </a></br>
-														<a href="single.jsp?product_id=<%=product.getId()%>" class="title"><%=productController.shortName(product.getName()) %></a></br>
+														<a href="single.jsp?product_id=<%=product.getId()%>" class="title"><%=productLogic.shortName(product.getName()) %></a></br>
 														<p>
 															<span><%=product.getPrice()%></span><span class="title">vnd</span>
 														</p>
@@ -102,7 +103,7 @@
 												<!-- 	<div class="top-content bag">  -->
 												</p>
 												
-													<a href="single.jsp?product_id=<%=product.getId()%>" class="title"><%= productController.shortName(product.getName()) %></a>
+													<a href="single.jsp?product_id=<%=product.getId()%>" class="title"><%= productLogic.shortName(product.getName()) %></a>
 												
 													<!--  <div class="white"> -->
 													  

@@ -142,12 +142,12 @@
 				<div class="navbar-inner main-menu">				
 					<a href="index.jsp" class="logo pull-left"><img src="themes/images/logo.png" class="site_logo" alt=""></a>
 					<nav id="menu" class="pull-right">
-						<ul>
+						<ul class="sf-js-enabled sf-shadow">
 						<%
 							for (Category category : categoryDao.getListCategory()) {
 						%>
-							<li><%=category.getName()%> | 			
-								<ul>
+							<li><a class="sf-with-ul"><%=category.getName()%></a> 			
+								<ul style="visibility: hiden; display: none">
 								<%
 									ArrayList<SubCategory> listSubCategory = (ArrayList) categoryMap.get(category.getId());
 										if (listSubCategory != null) {
