@@ -1,5 +1,4 @@
 package controller;
-
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -56,10 +55,12 @@ public class AccountController extends HttpServlet {
 		AccountDao accountDao = new AccountDao();
 		Account account = null;
 		String url = "";
+		System.out.println(command);
 		switch (command) {
 		case "register":
 			if (accountDao.isExist(request.getParameter("username"))) {
-				request.setAttribute("error_register", "Tài khoản đã tồn tại. Xin vui lòng nhập tên tài khoản khác");
+				System.out.println("register");
+				request.setAttribute("error_register", "Tai khoan da ton tai.Vui long nhap lai tai khoan khac ");
 				url = "/login.jsp";
 			} else {
 				account = new Account();
@@ -76,15 +77,17 @@ public class AccountController extends HttpServlet {
 
 		case "login":
 			account = accountDao.checkAccount(request.getParameter("username"), request.getParameter("password"));
+			
 			if (account != null) {
 				session.setAttribute("account", account);
 				if (account.getRole() == 1) {
 					response.sendRedirect("admin/index.jsp");
+//					url="/admin/index.jsp";
 				} else {
 					url = "/index.jsp";
 				}
 			} else {
-				request.setAttribute("error", "Tên tài khoản hoặc mật khẩu không hợp lệ. Xin vui lòng nhập lại.");
+				request.setAttribute("error", "Ten tai khoan hoac mat khau khong dung.");
 				url = "/login.jsp";
 			}
 			break;
@@ -92,8 +95,9 @@ public class AccountController extends HttpServlet {
 		default:
 			break;
 		}
-		if (account.getRole() != 1) {
-			RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+//		if (account != null && account.getRole() != 1) {
+		if ((account != null && account.getRole() != 1) || command.compareTo("register")==0 || command.compareTo("login")!=0) {
+		RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
 			rd.forward(request, response);
 		}
 	}

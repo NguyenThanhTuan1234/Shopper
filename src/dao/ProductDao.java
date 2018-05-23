@@ -271,6 +271,28 @@ public class ProductDao extends DbManager {
 		return result;
 	}
 	
+	public int getNumberProduct(){
+		String sql = "select * from product";
+		PreparedStatement pstm;
+		ResultSet rs;
+		openConnection();
+		int num = 0;
+		if(connection != null) {
+			try {
+				pstm = connection.prepareStatement(sql);
+				rs = pstm.executeQuery();
+				while(rs.next()) {
+					num++;
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return num;
+	}
+	
 	public static void main(String[] args) {
 		ProductDao dao = new ProductDao();
 		// dao.getAllProductMap();

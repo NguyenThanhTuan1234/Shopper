@@ -1,5 +1,6 @@
 <%@page import="entities.Account"%>
 <%@page import="dao.AccountDao"%>
+<%@page import="dao.ProductDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -100,7 +101,7 @@
                      
                         <li>
                             <a href="algorithm.jsp">
-                                <i class="far fa-check-square"></i>Khai pha luat ket hop</a>
+                                <i class="far fa-check-square"></i>Khai phá luật kết hợp</a>
                         </li>
                         
                         
@@ -203,8 +204,9 @@
                                                 <i class="zmdi zmdi-shopping-cart"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>388,688</h2>
-                                                <span>items solid</span>
+                                            <%ProductDao productDao = new ProductDao(); %>
+                                                <h2><%=productDao.getNumberProduct() %></h2>
+                                                <span>items</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -221,8 +223,8 @@
                                                 <i class="zmdi zmdi-calendar-note"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>1,086</h2>
-                                                <span>this week</span>
+                                                <h2>5%</h2>
+                                                <span>Minsup</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -236,11 +238,12 @@
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
                                             <div class="icon">
-                                                <i class="zmdi zmdi-money"></i>
+                                               <!--   <i class="zmdi zmdi-money"></i> -->
+                                                 <i class="zmdi zmdi-calendar-note"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>$1,060,386</h2>
-                                                <span>total earnings</span>
+                                                <h2>5%</h2>
+                                                <span>Minconf</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
