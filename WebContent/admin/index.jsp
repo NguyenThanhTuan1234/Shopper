@@ -1,6 +1,7 @@
 <%@page import="entities.Account"%>
 <%@page import="dao.AccountDao"%>
 <%@page import="dao.ProductDao"%>
+<%@page import="controller.AccountController"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -59,7 +60,7 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
+                        <a class="logo" href="index.jsp">
                             <img src="admin/images/icon/logo.png" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
@@ -75,8 +76,8 @@
                     <ul class="navbar-mobile__list list-unstyled">
                         
                         <li>
-                            <a href="table.html">
-                                <i class="fas fa-table"></i>Tables</a>
+                            <a href="algorithm.jsp">
+                                <i class="fas fa-table"></i>Khai pha luat ket hop</a>
                         </li>
                        
                             </ul>
@@ -90,7 +91,7 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="#">
+                <a href="index.jsp">
                     <img src="images/icon/logo.png"  />
                 </a>
             </div>
@@ -158,8 +159,9 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
-                                                    <i class="zmdi zmdi-power"></i>Logout</a>
+                                               <a href="#">
+                                                    <i class="zmdi zmdi-power"></i>Logout</a> 
+                                            
                                             </div>
                                         </div>
                                     </div>

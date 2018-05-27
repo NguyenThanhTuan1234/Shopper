@@ -49,10 +49,10 @@
 		if (session.getAttribute("account") != null) {
 			account = (Account) session.getAttribute("account");
 			if (account.getRole() != 1) {
-				response.sendRedirect("/ElectronicsStore/index.jsp");
+				response.sendRedirect("/shopper/index.jsp");
 			}
 		} else {
-			response.sendRedirect("/ElectronicsStore/login.jsp");
+			response.sendRedirect("/shopper/login.jsp");
 		}
 		ProductRuleDao productRuleDao = new ProductRuleDao();
 		ProductDao productDao = new ProductDao();
@@ -66,7 +66,7 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
+                        <a class="logo" href="index.jsp">
                             <img src="images/icon/logo.png" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
@@ -82,8 +82,8 @@
                     <ul class="navbar-mobile__list list-unstyled">
                         
                         <li>
-                            <a href="table.html">
-                                <i class="fas fa-table"></i>Tables</a>
+                            <a href="algorithm.jsp">
+                                <i class="fas fa-table"></i>Khai pha luat ket hop</a>
                         </li>
                         
                     </ul>
@@ -95,7 +95,7 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="#">
+                <a href="index.jsp">
                     <img src="images/icon/logo.png" alt="Cool Admin" />
                 </a>
             </div>
@@ -104,7 +104,7 @@
                     <ul class="list-unstyled navbar__list">
                         
                         <li class="active">
-                            <a href="admin/algorithm.jsp">
+                            <a href="algorithm.jsp">
                                 <i class="fas fa-table"></i>Khai phá luật kết hợp</a>
                         </li>
                     </ul>
